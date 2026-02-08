@@ -1,0 +1,142 @@
+🔐 Common Command:
+ls
+ls -l
+pwd
+cd folder_name
+cd ..
+
+cat AndroidManifest.xml
+less AndroidManifest.xml
+head file.txt
+tail file.txt
+
+grep "http" -r .
+grep "sendTextMessage" -r .
+grep "BOOT_COMPLETED" -r .
+grep -i "password" -r .
+
+chmod +x file
+ls -lh
+
+unzip app.apk
+file app.apk
+du -sh folder_name
+
+🔹 APKTool install:  sudo apt install apktool
+🔹 APK decompile: apktool d sample.apk -o sample_decompiled
+
+📄 Step 3: AndroidManifest.xml Analysis:
+cd sample_decompiled
+cat AndroidManifest.xml
+
+- Permissions (READ_SMS, INTERNET)
+- Services
+- Receivers
+- BOOT_COMPLETED
+
+🔎 Suspicious permission:
+grep "permission" AndroidManifest.xml
+grep "BOOT_COMPLETED" AndroidManifest.xml
+
+🔍 Step 4: Smali Code Analysis:
+ls smali
+grep "http" -r smali/
+
+grep "sendTextMessage" -r smali/
+grep "getDeviceId" -r smali/
+
+🔍 Step 5: Resource & String Analysis:
+grep "http" -r res/
+grep "password" -r .
+
+🔐 Step 6: Permission & File Inspection:
+ls -l
+du -sh *
+
+🔐 Step 7: DEX → Java:
+sudo apt install dex2jar
+d2j-dex2jar classes.dex -o sample.jar
+
+🔍 Basic grep (Foundation):
+grep "keyword" file
+grep "keyword" -r .
+grep -i "keyword" -r .
+grep -n "keyword" -r .
+
+📡 Network & C2 Server Hunting:
+grep "http://" -r .
+grep "https://" -r .
+
+grep ".com" -r .
+grep ".net" -r .
+grep ".ru" -r .
+
+grep "api" -r .
+
+grep "socket" -r .
+grep "URLConnection" -r .
+
+grep "sendTextMessage" -r .
+
+grep "SmsManager" -r .
+
+grep "READ_SMS" -r .
+grep "RECEIVE_SMS" -r .
+
+grep "CALL_PHONE" -r .
+grep "RECORD_AUDIO" -r .
+
+🕵️ Spyware & Surveillance Indicators:
+grep "getDeviceId" -r .
+grep "getSubscriberId" -r .
+grep "getLastKnownLocation" -r .
+grep "Camera" -r .
+grep "MediaRecorder" -r .
+
+🔐 Permission Abuse Detection:
+grep "permission" AndroidManifest.xml
+grep "AccessibilityService" -r .
+grep "SYSTEM_ALERT_WINDOW" -r .
+grep "DEVICE_ADMIN" -r .
+
+🔁 Persistence & Auto-Start Malware:
+grep "BOOT_COMPLETED" -r .
+grep "START_STICKY" -r .
+grep "AlarmManager" -r .
+
+🧠 Obfuscation & Anti-Analysis:
+grep "Base64" -r .
+grep "decrypt" -r .
+grep "AES" -r .
+grep "RSA" -r .
+grep "isDebuggerConnected" -r .
+grep "emulator" -r .
+
+🧾 Credential & Data Theft:
+grep "password" -r .
+grep "passwd" -r .
+grep "username" -r .
+grep "login" -r .
+grep "token" -r .
+
+🧪 Payload Download & Dropper Detection:
+grep "download" -r .
+grep ".apk" -r .
+grep "installPackage" -r .
+
+📂 Smali-Specific Powerful Grep:
+grep "invoke-virtual" -r smali/
+grep "Ljava/lang/Runtime;" -r smali/
+grep "exec" -r smali/
+
+🧨 Ransomware Indicators:
+grep "encrypt" -r .
+grep "decrypt" -r .
+grep "FileOutputStream" -r .
+grep "Bitcoin" -r .
+grep "wallet" -r .
+
+🧠 Pro Analyst Combo Commands:
+grep -Rni "http" .
+grep -RniE "sms|otp|password|token" .
+grep -Rni "BOOT_COMPLETED|START_STICKY" .
