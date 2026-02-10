@@ -1,0 +1,61 @@
+🔥 Linux Commands for APK Malware Analysis (Best & Practical):
+file sample.apk
+unzip -l sample.apk
+unzip sample.apk -d apk_raw/
+
+apktool d sample.apk
+apktool b decoded_apk/
+apktool d sample.apk -o decoded_apk/
+
+cat AndroidManifest.xml
+less AndroidManifest.xml
+grep "permission" AndroidManifest.xml
+grep "exported" AndroidManifest.xml
+grep "debuggable" AndroidManifest.xml
+
+ls smali/
+grep -R "http" smali/
+grep -R "https" smali/
+grep -R "sendTextMessage" smali/
+grep -R "TelephonyManager" smali/
+grep -R "DexClassLoader" smali/
+grep -R "Runtime->exec" smali/
+
+strings classes.dex
+strings classes.dex | grep http
+strings classes.dex | grep -E "[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+"
+strings classes.dex | sort | uniq
+
+ls assets/
+file assets/*
+hexdump -C assets/file.dat | head
+
+ls lib/
+file lib/*/*.so
+strings lib/*/*.so
+readelf -h lib/*/*.so
+
+grep -R "READ_SMS" .
+grep -R "READ_CONTACTS" smali/
+grep -R "ACCESS_FINE_LOCATION" smali/
+
+grep -R "http" .
+grep -R ".onion" .
+grep -R "base64" .
+grep -R "AES" .
+
+tree decoded_apk/
+find . -type f -size +1M
+sha256sum sample.apk
+md5sum sample.apk
+
+apktool d sample.apk
+grep "permission" AndroidManifest.xml
+grep "exported" AndroidManifest.xml
+grep -R "http" smali/
+grep -R "sendTextMessage" smali/
+strings classes.dex
+strings classes.dex | grep http
+ls assets/
+strings assets/*
+strings lib/*/*.so
